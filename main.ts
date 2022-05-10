@@ -134,15 +134,12 @@ basic.forever(function () {
         basic.pause(200)
         if (pins.digitalReadPin(DigitalPin.P2) == 1) {
             IgniterStatus = true
+            radio.sendNumber(21)
         } else {
             IgniterStatus = false
+            radio.sendNumber(22)
         }
         pins.digitalWritePin(DigitalPin.P14, 0)
-    }
-    if (IgniterStatus) {
-        radio.sendNumber(21)
-    } else {
-        radio.sendNumber(22)
     }
     if (SelfStatus && LinkStatus && IgniterStatus && ArmStatus) {
         Klar = true
